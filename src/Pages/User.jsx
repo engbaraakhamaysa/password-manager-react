@@ -26,21 +26,7 @@ export default function User() {
 
       <h1>My Passwords</h1>
 
-      <button
-        style={{
-          backgroundColor: "#2563eb",
-          color: "white",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          fontSize: "16px",
-          fontWeight: "bold",
-        }}
-        onClick={() => setShowAddModal(true)}
-      >
-        Add Password
-      </button>
+      <button onClick={() => setShowAddModal(true)}>Add Password</button>
 
       <PasswordList passwords={passwords} refreshPasswords={fetchPasswords} />
 
