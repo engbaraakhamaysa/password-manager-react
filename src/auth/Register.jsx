@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "../Components/Header";
-import { authService } from "../services/authServices";
+import { authService } from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../Hook/useAuth";

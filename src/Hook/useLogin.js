@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authService } from "../services/authServices";
+import { authService } from "../services/auth.service";
 import { useAuth } from "./useAuth";
 import { tokenService } from "../utils/token";
 import { jwtDecode } from "jwt-decode";
