@@ -1,24 +1,13 @@
-import { useEffect, useState } from "react";
-import AddPassword from "../Components/AddPassword";
+import { useState } from "react";
+import { usePasswords } from "../Hook/usePassword";
 import Header from "../Components/Header";
 import PasswordList from "../Components/PasswordList";
-import { passwordService } from "../services/passwordServices";
+import AddPassword from "../Components/AddPassword";
 
 export default function User() {
   const [showAddModal, setShowAddModal] = useState(false);
-  const [passwords, setPasswords] = useState([]);
 
-  const fetchPasswords = async () => {
-    try {
-      const res = await passwordService.get();
-      setPasswords(res);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  useEffect(() => {
-    fetchPasswords();
-  }, []);
+  const { passwords, loading, error, fetchPasswords } = usePasswords();
 
   return (
     <div>
@@ -27,6 +16,10 @@ export default function User() {
       <h1>My Passwords</h1>
 
       <button onClick={() => setShowAddModal(true)}>Add Password</button>
+
+      {loading && <p>Loading...</p>}
+
+      {error && <p>{error}</p>}
 
       <PasswordList passwords={passwords} refreshPasswords={fetchPasswords} />
 
