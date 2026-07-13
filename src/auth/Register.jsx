@@ -1,8 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "../Components/Header";
 import { authService } from "../services/authServices";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../Context/UserContext";
+
+import { useAuth } from "../Hook/useAuth";
 
 export default function Register() {
   // ==========================================================
@@ -26,7 +27,7 @@ export default function Register() {
   // ==========================================================
   // Context
   // ==========================================================
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useAuth();
 
   // ==========================================================
   // Navigation
