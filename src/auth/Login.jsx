@@ -1,32 +1,22 @@
-import { useContext, useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Header from "../Components/Header";
-import { authService } from "../services/authServices";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../Context/UserContext";
+import { useLogin } from "../Hook/useLogin";
 
 export default function Login() {
-  // ==========================================================
-  // State
-  // ==========================================================
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [accept, setAccept] = useState(false);
-
   // ==========================================================
   // Refs
   // ==========================================================
   const emailRef = useRef(null);
 
-  // ==========================================================
-  // Context
-  // ==========================================================
-  const { setUser } = useContext(UserContext);
-
-  // ==========================================================
-  // Navigation
-  // ==========================================================
-  const navigate = useNavigate();
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    accept,
+    handleSubmit,
+  } = useLogin();
 
   // ==========================================================
   // Effects
@@ -35,55 +25,6 @@ export default function Login() {
   useEffect(() => {
     emailRef.current?.focus();
   }, []);
-
-  // ==========================================================
-  // Handle Login
-  // ==========================================================
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    setAccept(true);
-    setError("");
-
-    // ==========================================================
-    // Client-side validation
-    // ==========================================================
-    const isValid = email.trim() !== "" && password.length >= 8;
-
-    if (!isValid) return;
-
-    try {
-      // Login request
-      const user = await authService.login({
-        email,
-        password,
-      });
-
-      // Save user in Context
-      setUser(user);
-
-      // Redirect based on role
-      navigate(user.role === "admin" ? "/admin" : "/");
-    } catch (err) {
-      // ==========================================================
-      // Error Handling
-      // ==========================================================
-      const status = err?.response?.status;
-      const message = err?.response?.data?.message;
-
-      if (status === 404) {
-        // setError("User not found. Please check your email.");
-        setError(message);
-      } else if (status === 401) {
-        // setError("Incorrect email or password.");
-        setError(message);
-      } else if (!status) {
-        setError("Network error. Please try again.");
-      } else {
-        setError(message || "Something went wrong.");
-      }
-    }
-  }
 
   // ==========================================================
   // UI
