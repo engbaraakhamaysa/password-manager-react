@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./sytle.css";
 
 import App from "./App";
-import { UserProvider } from "./Context/UserContext";
+import { UserProvider } from "./context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

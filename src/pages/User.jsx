@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { usePasswords } from "../Hook/usePassword";
-import Header from "../Components/Header";
-import PasswordList from "../Components/PasswordList";
-import AddPassword from "../Components/AddPassword";
+import { usePasswords } from "../hooks/usePassword";
+import Header from "../components/Header";
+import PasswordList from "../components/PasswordList";
+import AddPassword from "../components/AddPassword";
 
 export default function User() {
   const [showAddModal, setShowAddModal] = useState(false);
