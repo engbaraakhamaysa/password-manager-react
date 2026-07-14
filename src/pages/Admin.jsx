@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
 import { useUsers } from "../hooks/useUsers";
 
 export default function Admin() {
