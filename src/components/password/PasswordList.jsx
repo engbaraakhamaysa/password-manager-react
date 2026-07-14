@@ -1,4 +1,4 @@
-import { passwordService } from "../services/password.service";
+import { passwordService } from "../../services/password.service";
 
 export default function PasswordList({ passwords, refreshPasswords }) {
   if (passwords.length === 0) {

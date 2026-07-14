@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { passwordService } from "../services/password.service";
+import { passwordService } from "../../services/password.service";
 
 export default function AddPassword({ onClose, refreshPasswords }) {
   const [form, setForm] = useState({

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import Header from "../components/Header";
-import { authService } from "../services/auth.service";
+import Header from "../../components/layout/Header";
+import { authService } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Register() {
   // ==========================================================

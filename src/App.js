@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-import SignUp from "./auth/Register";
-import Login from "./auth/Login";
+import SignUp from "./pages/auth/Register";
+import Login from "./pages/auth/Login";
 
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import User from "./pages/User";
 
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/routes/ProtectedRoute";
 
 export default function App() {
   return (
