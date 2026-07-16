@@ -1,34 +1,40 @@
-import { useState } from "react";
-import { usePasswords } from "../hooks/usePassword";
-import Header from "../components/layout/Header";
+import { useEffect, useState } from "react";
+import { passwordService } from "../services/password.service";
+import DashboardLayout from "../components/layout/DashboardLayout";
 import PasswordList from "../components/password/PasswordList";
-import AddPassword from "../components/password/AddPassword";
 
-export default function User() {
-  const [showAddModal, setShowAddModal] = useState(false);
+export default function Passwords() {
+  const [passwords, setPasswords] = useState([]);
 
-  const { passwords, loading, error, fetchPasswords } = usePasswords();
+  const fetchPasswords = async () => {
+    try {
+      const data = await passwordService.get();
+
+      setPasswords(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchPasswords();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await passwordService.delete(id);
+
+      await fetchPasswords();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
-    <div>
-      <Header />
-
+    <DashboardLayout>
       <h1>My Passwords</h1>
 
-      <button onClick={() => setShowAddModal(true)}>Add Password</button>
-
-      {loading && <p>Loading...</p>}
-
-      {error && <p>{error}</p>}
-
-      <PasswordList passwords={passwords} refreshPasswords={fetchPasswords} />
-
-      {showAddModal && (
-        <AddPassword
-          onClose={() => setShowAddModal(false)}
-          refreshPasswords={fetchPasswords}
-        />
-      )}
-    </div>
+      <PasswordList passwords={passwords} onDelete={handleDelete} />
+    </DashboardLayout>
   );
 }
