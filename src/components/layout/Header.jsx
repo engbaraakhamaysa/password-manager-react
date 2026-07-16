@@ -8,8 +8,6 @@ export default function Header() {
 
         <Link to="/user">User</Link>
 
-        <Link to="/password">Password</Link>
-
         <Link to="/login">Login</Link>
 
         <Link to="/register">Register</Link>
