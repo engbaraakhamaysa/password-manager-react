@@ -1,18 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { ROUTES } from "../../constants/routes";
+import { ROLES } from "../../constants/roles";
 
 export default function Header() {
+  const { user, logout } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate(ROUTES.LOGIN);
+  };
+
   return (
     <header className="main-header">
       <div className="header-right">
-        <Link to="/">Home</Link>
+        <Link to={ROUTES.HOME}>Home</Link>
 
-        <Link to="/user">User</Link>
+        {!user && (
+          <>
+            <Link to={ROUTES.LOGIN}> Login</Link>
+            <Link to={ROUTES.REGISTER}>REGISTER</Link>
+          </>
+        )}
 
-        <Link to="/login">Login</Link>
+        {user && user.role === ROLES.USER && <Link to={ROUTES.USER}>User</Link>}
 
-        <Link to="/register">Register</Link>
+        {user && user.role === ROLES.ADMIN && (
+          <Link to={ROUTES.ADMIN}>Admin</Link>
+        )}
 
-        <Link to="/admin">Admin</Link>
+        {user && <button onClick={handleLogout}>Logout</button>}
       </div>
     </header>
   );
