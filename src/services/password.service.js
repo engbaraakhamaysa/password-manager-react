@@ -28,4 +28,10 @@ export const passwordService = {
 
     return res.data;
   },
+
+  getById: async (id) => {
+    const res = await api.get(`/password/${id}`);
+
+    return res.data.data;
+  },
 };

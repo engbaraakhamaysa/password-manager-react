@@ -1,0 +1,5 @@
+import PasswordForm from "../../components/password/PasswordForm";
+
+export default function EditPassword() {
+  return <PasswordForm />;
+}
