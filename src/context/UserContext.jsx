@@ -20,6 +20,7 @@ export function UserProvider({ children }) {
   // State
   // ==========================================================
   const [user, setUser] = useState(null);
+  const [isAuthReady, setIsAuthReady] = useState(false);
 
   // ==========================================================
   // Actions
@@ -37,8 +38,10 @@ export function UserProvider({ children }) {
       user,
       setUser,
       logout,
+      isAuthReady,
+      setIsAuthReady,
     }),
-    [user],
+    [user, isAuthReady],
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

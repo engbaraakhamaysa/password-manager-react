@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useAuth } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../services/auth.service";
+import { useAuth } from "./useAuth";
 
 export function useRegister() {
   const [form, setForm] = useState({
@@ -15,18 +15,23 @@ export function useRegister() {
   const [accept, setAccept] = useState(false);
 
   const { setUser } = useAuth();
-
   const navigate = useNavigate();
 
+  // Handle Input Change
+  const handleChange = (e) => {
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setAccept(true);
     setErrorMsg("");
 
-    // ==========================================================
-    // Client-side Validation
-    // ==========================================================
     const isValid =
       form.name.trim() !== "" &&
       form.email.trim() !== "" &&
@@ -42,31 +47,26 @@ export function useRegister() {
         password: form.password,
       });
 
-      // Save user in Context
       setUser(user);
 
-      // Redirect based on user role
       navigate(user.role === "admin" ? "/admin" : "/user");
     } catch (err) {
       const status = err?.response?.status;
       const message = err?.response?.data?.message;
 
-      if (status === 409) {
-        setErrorMsg(message);
-      } else if (status === 400) {
-        setErrorMsg(message);
-      } else if (!status) {
+      if (!status) {
         setErrorMsg("Network error. Please try again.");
       } else {
         setErrorMsg(message || "Something went wrong.");
       }
     }
   };
+
   return {
     form,
-    setForm,
-    handleSubmit,
     accept,
     errorMsg,
+    handleChange,
+    handleSubmit,
   };
 }

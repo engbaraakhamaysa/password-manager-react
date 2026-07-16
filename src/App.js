@@ -1,45 +1,47 @@
 import { Routes, Route } from "react-router-dom";
 
-import SignUp from "./pages/auth/Register";
-import Login from "./pages/auth/Login";
-
 import Home from "./pages/Home";
-import Admin from "./pages/Admin";
 import User from "./pages/User";
+import Admin from "./pages/Admin";
+
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 
+import { ROUTES } from "./constants/routes";
+import { ROLES } from "./constants/roles";
+
+import { useAuthInit } from "./hooks/useAuthInit";
+
 export default function App() {
+  useAuthInit();
   return (
-    <div>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path={ROUTES.HOME} element={<Home />} />
+      <Route path={ROUTES.LOGIN} element={<Login />} />
+      <Route path={ROUTES.REGISTER} element={<Register />} />
 
-        <Route path="/register" element={<SignUp />} />
+      {/* User Routes */}
+      <Route
+        path={ROUTES.USER}
+        element={
+          <ProtectedRoute role={ROLES.USER}>
+            <User />
+          </ProtectedRoute>
+        }
+      />
 
-        <Route path="/login" element={<Login />} />
-
-        {/* Protected User Route */}
-        <Route
-          path="/user"
-          element={
-            <ProtectedRoute role="user">
-              <User />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* Protected Admin Route */}
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute role="admin">
-              <Admin />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </div>
+      {/* Admin Routes */}
+      <Route
+        path={ROUTES.ADMIN}
+        element={
+          <ProtectedRoute role={ROLES.ADMIN}>
+            <Admin />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
