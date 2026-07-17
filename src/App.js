@@ -20,6 +20,10 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import EditPassword from "./pages/user/EditPassword";
 import Profile from "./pages/user/Profile";
 import Settings from "./pages/user/Settings";
+import AdminLayout from "./components/layout/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import Users from "./pages/admin/Users";
+import UserDetails from "./pages/admin/UserDetails";
 
 export default function App() {
   useAuthInit();
@@ -53,14 +57,29 @@ export default function App() {
       </Route>
 
       {/* Admin Routes */}
-      <Route
+      {/* <Route
         path={ROUTES.ADMIN}
         element={
           <ProtectedRoute role={ROLES.ADMIN}>
             <Admin />
           </ProtectedRoute>
         }
-      />
+      /> */}
+
+      <Route
+        path={ROUTES.ADMIN}
+        element={
+          <ProtectedRoute role={ROLES.ADMIN}>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<AdminDashboard />} />
+
+        <Route path="users" element={<Users />} />
+
+        <Route path="users/:id" element={<UserDetails />} />
+      </Route>
     </Routes>
   );
 }
