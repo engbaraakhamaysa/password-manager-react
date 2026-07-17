@@ -18,7 +18,14 @@ export default function PasswordItem({ password, onDelete }) {
       <td>
         <button onClick={handleEdit}>Edit</button>
 
-        <button onClick={() => onDelete(password._id)}>Delete</button>
+        <button
+          onClick={() => {
+            console.log("DELETE CLICK:", password._id);
+            onDelete(password._id);
+          }}
+        >
+          Delete
+        </button>
       </td>
     </tr>
   );

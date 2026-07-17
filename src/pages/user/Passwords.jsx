@@ -9,8 +9,6 @@ export default function Passwords() {
     try {
       const data = await passwordService.getAll();
 
-      console.log("PASSWORD DATA:", data);
-
       setPasswords(data);
     } catch (err) {
       console.log(err);
@@ -21,11 +19,21 @@ export default function Passwords() {
     fetchPasswords();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await passwordService.remove(id);
+
+      await fetchPasswords();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <h1>My Passwords</h1>
 
-      <PasswordList passwords={passwords} onDelete={fetchPasswords} />
+      <PasswordList passwords={passwords} onDelete={handleDelete} />
     </>
   );
 }

@@ -15,7 +15,7 @@ import { ROLES } from "./constants/roles";
 import { useAuthInit } from "./hooks/useAuthInit";
 import PasswordForm from "./components/password/PasswordForm";
 import Passwords from "./pages/user/Passwords";
-import UserDashboard from "./pages/user/UserDashboard";
+
 import DashboardLayout from "./components/layout/DashboardLayout";
 import EditPassword from "./pages/user/EditPassword";
 import Profile from "./pages/user/Profile";
@@ -39,7 +39,7 @@ export default function App() {
           </ProtectedRoute>
         }
       >
-        <Route index element={<UserDashboard />} />
+        <Route index element={<DashboardLayout />} />
 
         <Route path="passwords" element={<Passwords />} />
 
