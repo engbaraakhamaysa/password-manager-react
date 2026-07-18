@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import Header from "../../components/layout/Header";
+
 import { useLogin } from "../../hooks/useLogin";
 
 export default function Login() {
@@ -31,8 +31,6 @@ export default function Login() {
   // ==========================================================
   return (
     <div>
-      <Header />
-
       <div className="auth-container">
         <form onSubmit={handleSubmit} className="auth-form">
           <h2 className="auth-header">Login</h2>
