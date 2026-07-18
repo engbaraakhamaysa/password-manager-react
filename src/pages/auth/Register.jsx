@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import Header from "../../components/layout/Header";
+
 import { useRegister } from "../../hooks/useRegister";
 
 export default function Register() {
@@ -13,8 +13,6 @@ export default function Register() {
 
   return (
     <div>
-      <Header />
-
       <div className="auth-container">
         <form onSubmit={handleSubmit} className="auth-form">
           <h2 className="auth-header">Register</h2>

@@ -14,25 +14,42 @@ export default function Header() {
   };
 
   return (
-    <header className="main-header">
-      <div className="header-right">
+    <header className="header">
+      {/* Left */}
+      <nav className="header-left">
         <Link to={ROUTES.HOME}>Home</Link>
 
-        {!user && (
+        {user?.role === ROLES.USER && (
           <>
-            <Link to={ROUTES.LOGIN}> Login</Link>
-            <Link to={ROUTES.REGISTER}>REGISTER</Link>
+            <Link to="/user/passwords">Passwords</Link>
+
+            <Link to="/user/passwords/add">Add Password</Link>
           </>
         )}
 
-        {user && user.role === ROLES.USER && <Link to={ROUTES.USER}>User</Link>}
+        {user?.role === ROLES.ADMIN && <Link to="/admin/users">Users</Link>}
 
-        {user && user.role === ROLES.ADMIN && (
-          <Link to={ROUTES.ADMIN}>Admin</Link>
+        {user && (
+          <>
+            <Link to="/profile">Profile</Link>
+
+            <Link to="/settings">Settings</Link>
+          </>
+        )}
+      </nav>
+
+      {/* Right */}
+      <nav className="header-right">
+        {!user && (
+          <>
+            <Link to={ROUTES.LOGIN}>Login</Link>
+
+            <Link to={ROUTES.REGISTER}>Register</Link>
+          </>
         )}
 
         {user && <button onClick={handleLogout}>Logout</button>}
-      </div>
+      </nav>
     </header>
   );
 }
