@@ -3,9 +3,9 @@ import { useAuth } from "../../hooks/useAuth";
 import { ROUTES } from "../../constants/routes";
 import { ROLES } from "../../constants/roles";
 
+import "../../styles/layout/header.css";
 export default function Header() {
   const { user, logout } = useAuth();
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -15,14 +15,12 @@ export default function Header() {
 
   return (
     <header className="header">
-      {/* Left */}
-      <nav className="header-left">
+      <nav className="header-nav">
         <Link to={ROUTES.HOME}>Home</Link>
 
         {user?.role === ROLES.USER && (
           <>
             <Link to="/user/passwords">Passwords</Link>
-
             <Link to="/user/passwords/add">Add Password</Link>
           </>
         )}
@@ -32,18 +30,15 @@ export default function Header() {
         {user && (
           <>
             <Link to="/profile">Profile</Link>
-
             <Link to="/settings">Settings</Link>
           </>
         )}
       </nav>
 
-      {/* Right */}
-      <nav className="header-right">
+      <nav className="header-actions">
         {!user && (
           <>
             <Link to={ROUTES.LOGIN}>Login</Link>
-
             <Link to={ROUTES.REGISTER}>Register</Link>
           </>
         )}
