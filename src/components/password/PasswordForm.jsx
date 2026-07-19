@@ -62,42 +62,65 @@ export default function PasswordForm() {
       setLoading(false);
     }
   };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>{id ? "Edit Password" : "Add Password"}</h2>
+    <main className="password-form-page">
+      <form onSubmit={handleSubmit} className="form password-form">
+        <h2 className="password-form-title">
+          {id ? "Edit Password" : "Add Password"}
+        </h2>
 
-      <input
-        name="website"
-        placeholder="Website"
-        value={form.website}
-        onChange={handleChange}
-      />
+        <div className="form-group">
+          <label className="form-label">Website</label>
 
-      <input
-        name="username"
-        placeholder="Username"
-        value={form.username}
-        onChange={handleChange}
-      />
+          <input
+            className="input"
+            name="website"
+            placeholder="Website"
+            value={form.website}
+            onChange={handleChange}
+          />
+        </div>
 
-      <input
-        name="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={handleChange}
-      />
+        <div className="form-group">
+          <label className="form-label">Username</label>
 
-      <textarea
-        name="notes"
-        placeholder="Notes"
-        value={form.notes}
-        onChange={handleChange}
-      />
+          <input
+            className="input"
+            name="username"
+            placeholder="Username"
+            value={form.username}
+            onChange={handleChange}
+          />
+        </div>
 
-      <button type="submit">
-        {loading ? "Saving..." : id ? "Update" : "Save"}
-      </button>
-    </form>
+        <div className="form-group">
+          <label className="form-label">Password</label>
+
+          <input
+            className="input"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Notes</label>
+
+          <textarea
+            className="input textarea"
+            name="notes"
+            placeholder="Notes"
+            value={form.notes}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          {loading ? "Saving..." : id ? "Update" : "Save"}
+        </button>
+      </form>
+    </main>
   );
 }

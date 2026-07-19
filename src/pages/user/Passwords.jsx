@@ -30,10 +30,10 @@ export default function Passwords() {
   };
 
   return (
-    <>
-      <h1>My Passwords</h1>
+    <main className="passwords-page">
+      <h1 className="page-title">My Passwords</h1>
 
       <PasswordList passwords={passwords} onDelete={handleDelete} />
-    </>
+    </main>
   );
 }

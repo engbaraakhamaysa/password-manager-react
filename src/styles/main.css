@@ -29,17 +29,8 @@
    Pages
 ========================= */
 
-/* @import "./pages/home.css"; */
-
 @import "./pages/auth/auth.css";
-/* @import "./pages/auth/register.css"; */
 
-/* @import "./pages/user/passwords.css"; */
-/* @import "./pages/user/password-form.css"; */
-/* @import "./pages/user/edit-password.css"; */
+@import "./pages/passwords.css";
 
-/* @import "./pages/profile.css"; */
-/* @import "./pages/settings.css"; */
-
-/* @import "./pages/admin/users.css"; */
-/* @import "./pages/admin/user-details.css"; */
+@import "./pages/passwordsForm.css";
