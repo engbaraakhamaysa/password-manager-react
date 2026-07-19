@@ -1,0 +1,28 @@
+/* =========================
+   User Details Page
+========================= */
+
+.user-details-page {
+  min-height: calc(100vh - 128px);
+
+  padding: var(--spacing-xl);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-details-page .page-title {
+  width: 100%;
+  max-width: 500px;
+}
+
+.user-details-card {
+  width: 100%;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--spacing-md);
+}

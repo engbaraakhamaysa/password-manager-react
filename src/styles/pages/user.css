@@ -1,0 +1,25 @@
+/* =========================
+   Users Page
+========================= */
+
+.users-page {
+  min-height: calc(100vh - 128px);
+
+  padding: var(--spacing-xl);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-page .page-title {
+  width: 100%;
+  max-width: 900px;
+
+  margin-bottom: var(--spacing-lg);
+}
+
+.users-page .table-container {
+  width: 100%;
+  max-width: 900px;
+}

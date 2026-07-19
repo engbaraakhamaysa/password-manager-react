@@ -22,25 +22,27 @@ export default function UserDetails() {
   }, [id]);
 
   if (!user) {
-    return <p>Loading...</p>;
+    return <p className="empty-message">Loading...</p>;
   }
 
   return (
-    <div>
-      <h1>User Details</h1>
+    <main className="user-details-page">
+      <h1 className="page-title">User Details</h1>
 
-      <p>
-        <strong>Email:</strong> {user.email}
-      </p>
+      <div className="card user-details-card">
+        <p className="card-text">
+          <strong>Email:</strong> {user.email}
+        </p>
 
-      <p>
-        <strong>Role:</strong> {user.role}
-      </p>
+        <p className="card-text">
+          <strong>Role:</strong> {user.role}
+        </p>
 
-      <p>
-        <strong>Created At:</strong>{" "}
-        {new Date(user.createdAt).toLocaleDateString()}
-      </p>
-    </div>
+        <p className="card-text">
+          <strong>Created At:</strong>{" "}
+          {new Date(user.createdAt).toLocaleDateString()}
+        </p>
+      </div>
+    </main>
   );
 }

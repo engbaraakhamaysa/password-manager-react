@@ -4,24 +4,45 @@
 
 body {
   font-family: var(--font-family);
+
   background-color: var(--background-color);
+
   color: var(--text-color);
+
   line-height: 1.5;
+
+  margin: 0;
+}
+
+/* Remove default spacing */
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
 /* Links */
+
 a {
   color: inherit;
+
   text-decoration: none;
 }
 
 /* Buttons */
+
 button {
   font-family: inherit;
+
   cursor: pointer;
+
+  border: none;
 }
 
 /* Form Elements */
+
 input,
 textarea,
 select,
@@ -30,7 +51,15 @@ button {
 }
 
 /* Images */
+
 img {
   display: block;
+
   max-width: 100%;
+}
+
+/* App Layout */
+
+#root {
+  min-height: 100vh;
 }

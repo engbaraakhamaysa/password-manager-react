@@ -1,0 +1,33 @@
+/* =========================
+   Home Page
+========================= */
+
+.home-page {
+  min-height: calc(100vh - 128px);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: var(--spacing-xl);
+}
+
+.home-content {
+  text-align: center;
+
+  max-width: 600px;
+}
+
+.home-title {
+  font-size: 42px;
+
+  margin-bottom: var(--spacing-md);
+}
+
+.home-description {
+  color: var(--text-muted);
+
+  font-size: 18px;
+}

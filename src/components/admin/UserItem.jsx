@@ -13,10 +13,12 @@ export default function UserItem({ user }) {
 
       <td>{user.role}</td>
 
-      <td>
-        <button onClick={handleView}>View</button>
+      <td className="table-actions">
+        <button className="btn btn-primary" onClick={handleView}>
+          View
+        </button>
 
-        <button>Delete</button>
+        <button className="btn btn-danger">Delete</button>
       </td>
     </tr>
   );

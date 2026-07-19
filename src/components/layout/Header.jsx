@@ -3,7 +3,6 @@ import { useAuth } from "../../hooks/useAuth";
 import { ROUTES } from "../../constants/routes";
 import { ROLES } from "../../constants/roles";
 
-import "../../styles/layout/header.css";
 export default function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -16,21 +15,37 @@ export default function Header() {
   return (
     <header className="header">
       <nav className="header-nav">
-        <Link to={ROUTES.HOME}>Home</Link>
+        <Link className="header-link" to={ROUTES.HOME}>
+          Home
+        </Link>
 
         {user?.role === ROLES.USER && (
           <>
-            <Link to="/user/passwords">Passwords</Link>
-            <Link to="/user/passwords/add">Add Password</Link>
+            <Link className="header-link" to="/user/passwords">
+              Passwords
+            </Link>
+
+            <Link className="header-link" to="/user/passwords/add">
+              Add Password
+            </Link>
           </>
         )}
 
-        {user?.role === ROLES.ADMIN && <Link to="/admin/users">Users</Link>}
+        {user?.role === ROLES.ADMIN && (
+          <Link className="header-link" to="/admin/users">
+            Users
+          </Link>
+        )}
 
         {user && (
           <>
-            <Link to="/profile">Profile</Link>
-            <Link to="/settings">Settings</Link>
+            <Link className="header-link" to="/profile">
+              Profile
+            </Link>
+
+            <Link className="header-link" to="/settings">
+              Settings
+            </Link>
           </>
         )}
       </nav>
@@ -38,12 +53,21 @@ export default function Header() {
       <nav className="header-actions">
         {!user && (
           <>
-            <Link to={ROUTES.LOGIN}>Login</Link>
-            <Link to={ROUTES.REGISTER}>Register</Link>
+            <Link className="header-link" to={ROUTES.LOGIN}>
+              Login
+            </Link>
+
+            <Link className="header-link" to={ROUTES.REGISTER}>
+              Register
+            </Link>
           </>
         )}
 
-        {user && <button onClick={handleLogout}>Logout</button>}
+        {user && (
+          <button className="btn btn-danger" onClick={handleLogout}>
+            Logout
+          </button>
+        )}
       </nav>
     </header>
   );
