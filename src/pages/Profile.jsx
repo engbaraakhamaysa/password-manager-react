@@ -4,16 +4,18 @@ export default function Profile() {
   const { user } = useAuth();
 
   return (
-    <div>
-      <h1>Profile</h1>
+    <main className="profile-page">
+      <h1 className="page-title">Profile</h1>
 
-      <div>
-        <p>Name: {user?.name || "-"}</p>
+      <div className="card profile-card">
+        <h2 className="card-title">User Information</h2>
 
-        <p>Email: {user?.email || "-"}</p>
+        <p className="card-text">Name: {user?.name || "-"}</p>
 
-        <p>Role: {user?.role || "-"}</p>
+        <p className="card-text">Email: {user?.email || "-"}</p>
+
+        <p className="card-text">Role: {user?.role || "-"}</p>
       </div>
-    </div>
+    </main>
   );
 }

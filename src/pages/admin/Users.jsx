@@ -20,10 +20,10 @@ export default function Users() {
   }, []);
 
   return (
-    <>
-      <h1>Users</h1>
+    <main className="users-page">
+      <h1 className="page-title">Users</h1>
 
       <UserTable users={users} />
-    </>
+    </main>
   );
 }

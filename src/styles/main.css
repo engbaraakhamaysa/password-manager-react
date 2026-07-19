@@ -29,8 +29,18 @@
    Pages
 ========================= */
 
-@import "./pages/auth/auth.css";
+@import "./pages/auth.css";
 
 @import "./pages/passwords.css";
 
-@import "./pages/passwordsForm.css";
+@import "./pages/passwords-form.css";
+@import "./pages/profile.css";
+
+@import "./pages/settings.css";
+@import "./pages/user.css";
+
+@import "./pages/user-details.css";
+
+@import "./layout/header.css";
+
+@import "./pages/home.css";
