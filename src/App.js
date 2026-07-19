@@ -24,6 +24,7 @@ import Header from "./components/layout/Header";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 import UserRoutes from "./components/routes/UserRoutes";
 import AdminRoutes from "./components/routes/AdminRoutes";
+import Footer from "./components/layout/Footer";
 
 export default function App() {
   useAuthInit();
@@ -67,6 +68,8 @@ export default function App() {
           <Route path="/admin/users/:id" element={<UserDetails />} />
         </Route>
       </Routes>
+
+      <Footer />
     </>
   );
 }
