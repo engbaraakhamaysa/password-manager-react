@@ -15,14 +15,14 @@ export default function PasswordItem({ password, onDelete }) {
 
       <td>{password.notes || "-"}</td>
 
-      <td>
-        <button onClick={handleEdit}>Edit</button>
+      <td className="table-actions">
+        <button className="btn btn-secondary" onClick={handleEdit}>
+          Edit
+        </button>
 
         <button
-          onClick={() => {
-            console.log("DELETE CLICK:", password._id);
-            onDelete(password._id);
-          }}
+          className="btn btn-danger"
+          onClick={() => onDelete(password._id)}
         >
           Delete
         </button>

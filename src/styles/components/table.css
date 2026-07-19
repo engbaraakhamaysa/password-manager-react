@@ -44,3 +44,11 @@
 .table tr:hover {
   background-color: var(--background-color);
 }
+
+/* Actions */
+
+.table-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
